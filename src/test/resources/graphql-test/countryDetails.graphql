@@ -1,0 +1,6 @@
+query($name: String!) {
+    findCountryByName(name: $name) {
+        id
+        name
+    }
+}

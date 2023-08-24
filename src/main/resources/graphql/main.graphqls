@@ -3,9 +3,17 @@ type Country {
     name: String!
 }
 
+type State {
+    id: ID!
+    name: String!
+    country: Country
+}
+
 type Query {
     findCountryByName(name: String!): [Country]
     findAllCountries: [Country]
+    findAllStates: [State]
+    findStateByName(name: String!): [State]
 }
 
 type Mutation {

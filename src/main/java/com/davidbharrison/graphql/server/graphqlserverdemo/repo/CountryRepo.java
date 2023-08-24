@@ -14,4 +14,8 @@ public interface CountryRepo extends PagingAndSortingRepository<Country, Long> {
     List<Country>findByName(@Param("name") String name);
 
     List<Country> findAll();
+
+    Country findById(Integer id);
+
+
 }

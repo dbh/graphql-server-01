@@ -1,7 +1,8 @@
 package com.davidbharrison.graphql.server.graphqlserverdemo.resolver;
 
-import java.util.List; 
+import java.util.List;
 
+import com.davidbharrison.graphql.server.graphqlserverdemo.entity.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +24,6 @@ public class CountryResolver {
         this.countryRepo = countryRepo;
     }
 
-
     @QueryMapping
     public List<Country> findCountryByName(@Argument String name) {
         System.out.println("findCountryByName entry point");
@@ -34,5 +34,10 @@ public class CountryResolver {
     public List<Country> findAllCountries() {
         System.out.println("findAllCountries entry point");
         return countryRepo.findAll();
+    }
+
+    @SchemaMapping
+    public Country country(State state) {
+        return countryRepo.findById(state.getCountryId());
     }
 }

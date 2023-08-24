@@ -1,10 +1,10 @@
-create table COUNTRIES(
+create table IF NOT EXISTS COUNTRIES(
   ID int not null AUTO_INCREMENT,
   NAME varchar(100) not null,
   PRIMARY KEY ( ID )
 );
 
-CREATE TABLE STATES(
+CREATE TABLE IF NOT EXISTS  STATES(
     ID int not null AUTO_INCREMENT,
     NAME varchar(100) not null,
     COUNTRY_ID int not null,

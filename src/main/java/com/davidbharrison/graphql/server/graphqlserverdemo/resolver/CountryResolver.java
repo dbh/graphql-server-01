@@ -30,4 +30,9 @@ public class CountryResolver {
         return countryRepo.findByName(name);
     }
 
+    @QueryMapping
+    public List<Country> findAllCountries() {
+        System.out.println("findAllCountries entry point");
+        return countryRepo.findAll();
+    }
 }

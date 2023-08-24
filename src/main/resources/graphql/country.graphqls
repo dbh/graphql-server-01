@@ -5,6 +5,7 @@ type Country {
 
 type Query {
     findCountryByName(name: String!): [Country]
+    findAllCountries: [Country]
 }
 
 type Mutation {

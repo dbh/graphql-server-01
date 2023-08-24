@@ -6,6 +6,10 @@ A simple graphql serve just for learning purposes
 ## Database
 H2 database is used for a datastore.
 
+Initial schema and data are populated, if the spring.sql.init.mode=always
+
+see schema.sql and data.sql for more info.
+
 **H2 Console**: http://localhost:8080/h2-console
 
 ## Data Exposed

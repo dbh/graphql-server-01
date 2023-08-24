@@ -1,0 +1,12 @@
+type Country {
+    id: ID!
+    name: String!
+}
+
+type Query {
+    findCountryByName(name: String!): [Country]
+}
+
+type Mutation {
+    createCountry(name: String!): Country!
+}

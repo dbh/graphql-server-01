@@ -1,6 +1,5 @@
 package com.davidbharrison.graphql.server.graphqlserverdemo.repo;
 
-import com.davidbharrison.graphql.server.graphqlserverdemo.entity.Country;
 import com.davidbharrison.graphql.server.graphqlserverdemo.entity.State;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +13,7 @@ public interface StateRepo extends PagingAndSortingRepository<State, Long> {
     List<State>findByName(@Param("name") String name);
 
     List<State> findAll();
+
+    State save(State state);
+
 }

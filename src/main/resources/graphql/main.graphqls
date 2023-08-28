@@ -14,6 +14,12 @@ type State {
     country: Country
 }
 
+input StateInput {
+    id: ID
+    name: String!
+    countryId: ID!
+}
+
 type Query {
     findCountryByName(name: String!): [Country]
     findAllCountries: [Country]
@@ -23,4 +29,5 @@ type Query {
 
 type Mutation {
     saveCountry(countryInput: CountryInput): Country
+    saveState(stateInput: StateInput): State
 }

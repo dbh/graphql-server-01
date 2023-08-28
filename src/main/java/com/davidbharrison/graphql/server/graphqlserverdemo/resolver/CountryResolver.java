@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.davidbharrison.graphql.server.graphqlserverdemo.entity.State;
 import com.davidbharrison.graphql.server.graphqlserverdemo.input.CountryInput;
-import com.davidbharrison.graphql.server.graphqlserverdemo.input.CountryInputStr;
 import lombok.extern.java.Log;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -49,16 +48,6 @@ public class CountryResolver {
         country.setId(countryInput.getId());
         country.setName(countryInput.getName());
 
-        country = countryRepo.save(country);
-        return country;
-    }
-
-    @MutationMapping(name="saveCountryStr")
-    public Country saveCountryStr(@Argument CountryInputStr countryInputStr) {
-        log.info("saveCountryStr");
-        Country country = new Country();
-        country.setId(null);
-        country.setName(countryInputStr.getName());
         country = countryRepo.save(country);
         return country;
     }

@@ -30,4 +30,5 @@ type Query {
 type Mutation {
     saveCountry(countryInput: CountryInput): Country
     saveState(stateInput: StateInput): State
+    deleteState(stateId: ID): Boolean!
 }

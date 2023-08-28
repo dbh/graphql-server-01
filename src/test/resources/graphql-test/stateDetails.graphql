@@ -2,5 +2,9 @@ query($name: String!) {
     findStateByName(name: $name) {
         id
         name
+        country {
+            id
+            name
+        }
     }
 }

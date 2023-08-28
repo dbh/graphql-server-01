@@ -17,5 +17,6 @@ public interface CountryRepo extends PagingAndSortingRepository<Country, Long> {
 
     Country findById(Integer id);
 
+    Country save(Country country);
 
 }

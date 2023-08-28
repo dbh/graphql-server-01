@@ -3,11 +3,10 @@ package com.davidbharrison.graphql.server.graphqlserverdemo.resolver;
 import java.util.List;
 
 import com.davidbharrison.graphql.server.graphqlserverdemo.entity.State;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
+import com.davidbharrison.graphql.server.graphqlserverdemo.input.CountryInput;
+import com.davidbharrison.graphql.server.graphqlserverdemo.input.CountryInputStr;
+import lombok.extern.java.Log;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.Argument;
 
@@ -16,6 +15,7 @@ import com.davidbharrison.graphql.server.graphqlserverdemo.entity.Country;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+@Log
 @Controller
 public class CountryResolver {
     private CountryRepo countryRepo;
@@ -39,5 +39,27 @@ public class CountryResolver {
     @SchemaMapping
     public Country country(State state) {
         return countryRepo.findById(state.getCountryId());
+    }
+
+
+    @MutationMapping(name="saveCountry")
+    public Country saveCountry(@Argument CountryInput countryInput) {
+        log.info("saveCountry");
+        Country country = new Country();
+        country.setId(countryInput.getId());
+        country.setName(countryInput.getName());
+
+        country = countryRepo.save(country);
+        return country;
+    }
+
+    @MutationMapping(name="saveCountryStr")
+    public Country saveCountryStr(@Argument CountryInputStr countryInputStr) {
+        log.info("saveCountryStr");
+        Country country = new Country();
+        country.setId(null);
+        country.setName(countryInputStr.getName());
+        country = countryRepo.save(country);
+        return country;
     }
 }

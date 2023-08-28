@@ -3,6 +3,11 @@ type Country {
     name: String!
 }
 
+input CountryInput {
+    id: ID
+    name: String!
+}
+
 type State {
     id: ID!
     name: String!
@@ -17,5 +22,5 @@ type Query {
 }
 
 type Mutation {
-    createCountry(name: String!): Country!
+    saveCountry(countryInput: CountryInput): Country
 }

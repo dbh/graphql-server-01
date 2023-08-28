@@ -1,7 +1,8 @@
 # graphql-server-01
-A simple graphql serve just for learning purposes
+A simple graphql server just for learning purposes
 
 * Initial model is Countries and States
+* Maximum magic is permitted
 
 ## Database
 H2 database is used for a datastore.
@@ -19,6 +20,8 @@ Data is exposed by both REST and GraphQL.
 ### REST
 Utilizing the magic of Spring Data, end points and data are automatically accessible via explorer on 
 **Endpoint**: http://localhost:8080/
+
+This is helpful in seeing what is in the database, before GraphQL Operations defined.
 
 ### GraphQL
 

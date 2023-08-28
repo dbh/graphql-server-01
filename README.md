@@ -124,7 +124,7 @@ mutation($data: StateInput){
 }
 ```
 
-delete a state
+#### delete a state
 ```
 mutation{
     deleteState(stateId: 2)

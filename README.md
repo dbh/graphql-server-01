@@ -27,7 +27,7 @@ Utilizing the magic of Spring Data, end points and data are automatically access
 **File**: resoures/graphql/**main.graphqls**
 
 
-Find All Countries
+#### Find All Countries
 ```
 query {
     findAllCountries {
@@ -37,7 +37,7 @@ query {
 }
 ```
 
-Find A Country by Name
+#### Find A Country by Name
 ```
 query($name: String!) {
     findCountryByName(name: $name) {
@@ -47,7 +47,28 @@ query($name: String!) {
 }
 ```
 
-Find all states names their country names
+#### Update a Country
+
+variables
+```json
+{
+    "data": {
+        "id": 1,
+        "name": "United States of America"
+    }
+}
+```
+
+mutation
+```
+mutation($data: CountryInput){
+    saveCountry(countryInput: $data)
+    {id, name}
+}
+```
+
+
+#### Find all states names their country names
 ```
 query {
     findAllStates {
@@ -59,7 +80,15 @@ query {
 }
 ```
 
-Find a specific state, including country info
+#### Find a specific state, including country info
+variables
+```json
+{
+    "name": "Arizona"
+}
+```
+
+Query
 ```
 query($name: String!) {
     findStateByName(name: $name) {
@@ -70,5 +99,34 @@ query($name: String!) {
             name
         }
     }
+}
+```
+
+#### update a state
+
+Here, we'll update a state's name
+
+Variables
+```
+{
+    "data": {
+        "name": "confusion",
+        "countryId": 1
+    }
+}
+```
+
+Mutation
+```
+mutation($data: StateInput){
+    saveState(stateInput: $data)
+    {id, name}
+}
+```
+
+delete a state
+```
+mutation{
+    deleteState(stateId: 2)
 }
 ```

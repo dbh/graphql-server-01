@@ -13,15 +13,17 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Log
 @Controller
 public class StateResolver {
-    @Autowired
     private StateRepo stateRepo;
 
+    @Autowired
     public StateResolver(StateRepo repo) {
         this.stateRepo = repo;
     }
@@ -47,5 +49,16 @@ public class StateResolver {
 
         state = stateRepo.save(state);
         return state;
+    }
+
+    @Transactional
+    @MutationMapping(name="deleteState")
+    public Boolean deleteState(@Argument Integer stateId) {
+        log.info("deleteState");
+        if (!stateRepo.existsById(stateId)) {
+            return false;
+        }
+        stateRepo.deleteById(stateId);
+        return true;
     }
 }
